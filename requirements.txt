@@ -1,4 +1,4 @@
-asgiref==3.3.4
+
 Django==3.2.4
 django-environ==0.4.5
 django-parler==2.2

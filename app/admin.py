@@ -1,7 +1,7 @@
 from django.contrib import admin
 from parler.admin import TranslatableAdmin
 
-from .models import Category, Regions, Blog, Hashtags, PicturesFromTheBlog
+from .models import Category, Regions, Blog, PicturesFromTheBlog
 
 
 @admin.register(Category)
@@ -19,9 +19,9 @@ class BlogAdmin(TranslatableAdmin):
     list_display = ('title', 'category')
 
 
-@admin.register(Hashtags)
-class HashtagsAdmin(admin.ModelAdmin):
-    list_display = ('name', )
+# @admin.register(Hashtags)
+# class HashtagsAdmin(admin.ModelAdmin):
+#     list_display = ('name', )
 
 
 @admin.register(PicturesFromTheBlog)

@@ -1,6 +1,7 @@
 from django.db import models
 from parler.models import TranslatableModel, TranslatedFields
 from django.utils.translation import gettext_lazy as _
+from taggit.managers import TaggableManager
 
 
 class Regions(TranslatableModel):
@@ -44,6 +45,7 @@ class Blog(TranslatableModel):
     image = models.ImageField(upload_to='blogimages')
     region = models.ForeignKey(Regions, on_delete=models.CASCADE, )
     category = models.ForeignKey(Category, on_delete=models.CASCADE, )
+    tags=TaggableManager()
 
     class Meta:
         verbose_name_plural = 'Blog'
@@ -55,16 +57,16 @@ class Blog(TranslatableModel):
         return f'blog/{self.slug}'
 
 
-class Hashtags(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    slug = models.SlugField(max_length=255, blank=True, null=True)
-    posts = models.ManyToManyField(Blog,)
+# class Hashtags(models.Model):
+#     name = models.CharField(max_length=255, blank=True, null=True)
+#     slug = models.SlugField(max_length=255, blank=True, null=True)
+#     posts = models.ManyToManyField(Blog,)
 
-    class Meta:
-        verbose_name_plural = 'Hashtags'
+#     class Meta:
+#         verbose_name_plural = 'Hashtags'
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 
 class PicturesFromTheBlog(models.Model):
